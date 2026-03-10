@@ -18,8 +18,9 @@ class ProductoController {
             $id = uniqid(); 
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
+            $electrica = $_POST['electrica'];
 
-            $producto = new Producto($id, $nombre, $precio);
+            $producto = new Bici($nombre, $precio, $electrica, $id);
             $this->gestor->agregar($producto);
 
             header("Location: index.php");

@@ -13,6 +13,12 @@
         Precio:<br>
         <input type="number" step="1" name="precio" required><br><br>
 
+        Tipo:<br>
+        <select name="electrica">
+            <option value="0">Muscular</option>
+            <option value="1">Eléctrica</option>
+        </select><br><br>
+
         <button type="submit">Guardar</button>
     </form>
 

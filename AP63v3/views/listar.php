@@ -13,6 +13,7 @@
             <th>ID</th>
             <th>Nombre</th>
             <th>Precio</th>
+            <th>Tipo</th>
             <th>Acciones</th>
         </tr>
 
@@ -21,6 +22,7 @@
             <td><?= $p->getId() ?></td>
             <td><?= $p->getNombre() ?></td>
             <td><?= $p->getPrecio() ?></td>
+            <td><?= $p->getElectrica() ?></td>
             <td>
                 <a href="index.php?accion=editar&id=<?= $p->getId() ?>">Editar</a>
                 |
