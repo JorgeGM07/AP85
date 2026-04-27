@@ -13,6 +13,17 @@
         Precio:<br>
         <input type="number" step="1" name="precio" value="<?= $producto->getPrecio() ?>" required><br><br>
 
+        Eléctrica:<br>
+        <select name="electrica" required>
+            <option value="0" <?= ($producto->getElectricaValor() == 0) ? 'selected' : '' ?>>
+                Muscular
+            </option>
+            <option value="1" <?= ($producto->getElectricaValor() == 1) ? 'selected' : '' ?>>
+                Eléctrica
+            </option>
+        </select>
+        <br><br>
+
         <button type="submit">Actualizar</button>
     </form>
 

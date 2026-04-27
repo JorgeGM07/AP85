@@ -15,7 +15,7 @@ class ProductoController {
 
     public function crear() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = uniqid(); 
+            $id = null; 
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             $electrica = $_POST['electrica'];
@@ -40,7 +40,11 @@ class ProductoController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->gestor->actualizar($id, $_POST['nombre'], $_POST['precio']);
+            $producto->setNombre($_POST['nombre']);
+            $producto->setPrecio($_POST['precio']);
+            $producto->setElectrica((int)$_POST['electrica']);
+
+            $this->gestor->actualizar($producto);
             header("Location: index.php");
             exit;
         }

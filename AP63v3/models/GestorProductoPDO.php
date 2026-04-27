@@ -43,4 +43,32 @@ private $conn;
         throw $e;
         }
     }
+
+    public function eliminar ($id){
+        $sql="DELETE FROM bici WHERE id=:id";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->bindValue(':id',$id);
+        return $stmt->execute();
+    }
+
+    public function buscar($id) {
+        $sql="SELECT * FROM bici WHERE id=$id";
+        $stmt=$this->conn->query($sql);
+ 
+        while ($value = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $bici = new Bici($value['nombre'], $value['precio'], $value['electrica'], $value['id']);
+        }
+        return $bici;
+    }
+
+    public function actualizar($producto) {
+
+        $sql="UPDATE bici SET nombre=:nombre, precio=:precio, electrica=:electrica WHERE id=:id";
+        $stmt=$this->conn->prepare($sql);
+        $stmt->bindValue(':nombre',$producto->getNombre());
+        $stmt->bindValue(':precio',$producto->getPrecio());
+        $stmt->bindValue(':electrica',$producto->getElectricaValor());
+        $stmt->bindValue(':id',$producto->getId());
+        return $stmt->execute();
+    }
 }

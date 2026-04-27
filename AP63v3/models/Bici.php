@@ -3,7 +3,7 @@
 class Bici extends Producto{
     private $electrica;
 
-    function __construct($nombre, $precio, $electrica, $id=0){
+    function __construct($nombre, $precio, $electrica, $id=null){
         parent::__construct($id, $nombre, $precio);
         $this->electrica=$electrica;
     }
