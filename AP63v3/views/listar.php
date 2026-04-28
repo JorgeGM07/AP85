@@ -6,7 +6,19 @@
 <body>
     <h1>Productos</h1>
 
-    <a href="index.php?accion=crear">Agregar Producto</a>
+    <div style="background-color: #f0f0f0; padding: 10px; margin-bottom: 20px;">
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+            Bienvenido, <b><?= $_SESSION['usuario_email'] ?></b> | 
+            <a href="index.php?accion=logout">Cerrar Sesión</a>
+        <?php else: ?>
+            <a href="index.php?accion=login">Iniciar Sesión</a> | 
+            <a href="index.php?accion=registro">Registrarse</a>
+        <?php endif; ?>
+    </div>
+
+    <?php if (isset($_SESSION['usuario_id'])): ?>
+        <a href="index.php?accion=crear">Agregar Producto</a><br><br>
+    <?php endif; ?>
 
     <table border="1" cellpadding="10">
         <tr>
@@ -14,7 +26,9 @@
             <th>Nombre</th>
             <th>Precio</th>
             <th>Tipo</th>
-            <th>Acciones</th>
+            <?php if (isset($_SESSION['usuario_id'])): ?>
+                <th>Acciones</th>
+            <?php endif; ?>
         </tr>
 
         <?php foreach ($productos as $p): ?>
@@ -23,11 +37,13 @@
             <td><?= $p->getNombre() ?></td>
             <td><?= $p->getPrecio() ?></td>
             <td><?= $p->getElectrica() ?></td>
+            <?php if (isset($_SESSION['usuario_id'])): ?>
             <td>
                 <a href="index.php?accion=editar&id=<?= $p->getId() ?>">Editar</a>
                 |
                 <a href="index.php?accion=eliminar&id=<?= $p->getId() ?>">Eliminar</a>
             </td>
+            <?php endif; ?>
         </tr>
         <?php endforeach; ?>
 
